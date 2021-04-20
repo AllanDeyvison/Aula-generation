@@ -36,6 +36,15 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
+INSERT INTO `registroescolar`.`alunes` (`nome`, `idade`, `serie`, `nota`, `faltas`) VALUES ('João', '12', '6', '7.6', '6');
+INSERT INTO `registroescolar`.`alunes` (`nome`, `idade`, `serie`, `nota`, `faltas`) VALUES ('Maria', '13', '7', '7.9', '4');
+INSERT INTO `registroescolar`.`alunes` (`nome`, `idade`, `serie`, `nota`, `faltas`) VALUES ('Jeferson', '11', '5', '6.4', '8');
+INSERT INTO `registroescolar`.`alunes` (`nome`, `idade`, `serie`, `nota`, `faltas`) VALUES ('Ana', '14', '8', '8.4', '5');
+INSERT INTO `registroescolar`.`alunes` (`nome`, `idade`, `serie`, `nota`, `faltas`) VALUES ('Pedro', '14', '7', '8.7', '2');
+INSERT INTO `registroescolar`.`alunes` (`nome`, `idade`, `serie`, `nota`, `faltas`) VALUES ('Alice', '12', '6', '9.8', '1');
+INSERT INTO `registroescolar`.`alunes` (`nome`, `idade`, `serie`, `nota`, `faltas`) VALUES ('Giovana', '13', '7', '10', '3');
+INSERT INTO `registroescolar`.`alunes` (`nome`, `idade`, `serie`, `nota`, `faltas`) VALUES ('Kaique', '15', '8', '7.4', '8');
+
 SELECT * FROM registroescolar.alunes;
 SELECT * FROM registroescolar.alunes WHERE nota > 7;
 SELECT * FROM registroescolar.alunes WHERE nota < 7;
