@@ -21,4 +21,11 @@ SELECT * FROM tb_produto WHERE preco BETWEEN 3.00 AND 60.00;
 SELECT * FROM tb_produto WHERE nome LIKE "C%";
 
 SELECT * FROM db_cidade_das_carnes.tb_produto 
-INNER JOIN db_cidade_das_carnes.tb_categoria ON db_cidade_das_carnes.tb_categoria.id_categoria = db_cidade_das_carnes.tb_produto.id_categoria
+INNER JOIN db_cidade_das_carnes.tb_categoria 
+ON db_cidade_das_carnes.tb_categoria.id_categoria = db_cidade_das_carnes.tb_produto.id_categoria;
+
+SELECT * FROM db_cidade_das_carnes.tb_produto 
+INNER JOIN db_cidade_das_carnes.tb_categoria 
+ON db_cidade_das_carnes.tb_categoria.id_categoria = db_cidade_das_carnes.tb_produto.id_categoria
+WHERE tb_categoria.tipos = "Bovina" ;
+

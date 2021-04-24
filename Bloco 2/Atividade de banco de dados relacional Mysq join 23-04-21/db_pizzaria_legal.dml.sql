@@ -23,4 +23,10 @@ SELECT * FROM tb_pizza WHERE preco BETWEEN 29.00 AND 60.00;
 SELECT * FROM tb_pizza WHERE sabor LIKE "C%";
 
 SELECT * FROM tb_pizza 
-INNER JOIN tb_categoria ON tb_categoria.id_categoria = tb_pizza.id_categoria
+INNER JOIN tb_categoria 
+ON tb_categoria.id_categoria = tb_pizza.id_categoria;
+
+SELECT * FROM tb_pizza 
+INNER JOIN tb_categoria 
+ON tb_categoria.id_categoria = tb_pizza.id_categoria
+WHERE tb_categoria.tipo = "Salgada";

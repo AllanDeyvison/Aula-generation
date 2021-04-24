@@ -22,4 +22,10 @@ SELECT * FROM tb_produto WHERE preco BETWEEN 3.00 AND 60.00;
 SELECT * FROM tb_produto WHERE produto LIKE "B%";
 
 SELECT * FROM db_farmacia.tb_produto 
-INNER JOIN db_farmacia.tb_categoria ON db_farmacia.tb_categoria.id_categoria = db_farmacia.tb_produto.id_categoria
+INNER JOIN db_farmacia.tb_categoria 
+ON db_farmacia.tb_categoria.id_categoria = db_farmacia.tb_produto.id_categoria;
+
+SELECT * FROM db_farmacia.tb_produto 
+INNER JOIN db_farmacia.tb_categoria 
+ON db_farmacia.tb_categoria.id_categoria = db_farmacia.tb_produto.id_categoria
+WHERE tb_categoria.categoria = "Remédios";
