@@ -1,4 +1,5 @@
-package com.farmacia.pharmacy.controller;
+package com.pharmacy.farmacia.controllers;
+
 
 import java.util.List;
 
@@ -15,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.farmacia.pharmacy.models.Produto;
-import com.farmacia.pharmacy.repository.ProdutoRepository;
+import com.pharmacy.farmacia.models.Produto;
+import com.pharmacy.farmacia.repository.ProdutoRepository;
 
 @RestController
 @RequestMapping ("/produto")
@@ -24,7 +25,7 @@ import com.farmacia.pharmacy.repository.ProdutoRepository;
 public class ProdutoController {
 	
 	@Autowired
-	private ProdutoRepository repository; 
+	private ProdutoRepository repository;
 	
 	public @GetMapping ("/todos-produtos") List<Produto> todosProdutos()
 	{
@@ -36,10 +37,10 @@ public class ProdutoController {
 		return repository.findById(id).map (resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping ("/descricao-titulo{descricaoProduto}/{titulo]")
+	@GetMapping ("/titulo/{titulo}")
 	
-	public ResponseEntity<List<Produto>>GetByDescricao (@PathVariable String descricaoProduto, String titulo){
-		return ResponseEntity.ok(repository.findAllByDescricaoProdutoAndTituloContainigIgnoreCase(descricaoProduto, titulo));
+	public ResponseEntity<List<Produto>>GetByDescricao (@PathVariable  String titulo){
+		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 	
 	public @PostMapping ResponseEntity<Produto> post (@RequestBody Produto produto){
@@ -54,6 +55,5 @@ public class ProdutoController {
 	public void delete (@PathVariable long id){
 		repository.deleteById(id);
 	}
-
 
 }

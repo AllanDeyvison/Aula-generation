@@ -1,4 +1,4 @@
-package com.farmacia.pharmacy.models;
+package com.pharmacy.farmacia.models;
 
 import java.util.List;
 
@@ -12,9 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-
 
 @Entity
 @Table (name ="tb_categoria")
@@ -22,10 +21,11 @@ public class Categoria {
 	
 	private @Id @GeneratedValue (strategy = GenerationType.IDENTITY) long id;
 	private @NotNull String categoria;
+
 	private @NotNull String descricao;
 	
 	
-	@OneToMany (mappedBy = "categoria", fetch =FetchType.LAZY,cascade = CascadeType.REMOVE)
+	@OneToMany (mappedBy = "categoria", fetch =FetchType.EAGER,cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties ("categoria")
 	private List<Produto> produtos;
 
@@ -48,7 +48,7 @@ public class Categoria {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-
+	
 
 	public String getDescricao() {
 		return descricao;
@@ -68,5 +68,7 @@ public class Categoria {
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
 	}
+
+	
 
 }

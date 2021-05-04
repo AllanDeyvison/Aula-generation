@@ -1,4 +1,4 @@
-package com.farmacia.pharmacy.controller;
+package com.pharmacy.farmacia.controllers;
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.farmacia.pharmacy.models.Categoria;
-import com.farmacia.pharmacy.repository.CategoriaRepository;
+import com.pharmacy.farmacia.models.Categoria;
+import com.pharmacy.farmacia.repository.CategoriaRepository;
 
 @RestController
 @RequestMapping ("/categoria")
@@ -39,7 +39,13 @@ public class CategoriaController {
 	@GetMapping ("/descricao/{descricao}")
 	public ResponseEntity<List<Categoria>> GetByDescricao(@PathVariable String descricao){
 		
-		return ResponseEntity.ok(repository.findAllByDescricaoContainigIgnoreCase(descricao));
+		return ResponseEntity.ok(repository.findAllByDescricaoContainingIgnoreCase(descricao));
+	}
+	
+	@GetMapping ("/categoria/{categoria}")
+	public ResponseEntity<List<Categoria>> GetBycategoria(@PathVariable String categoria){
+		
+		return ResponseEntity.ok(repository.findAllByCategoriaContainingIgnoreCase(categoria));
 	}
 	
 	public @PostMapping ResponseEntity<Categoria> post (@RequestBody Categoria Categoria){
@@ -54,5 +60,6 @@ public class CategoriaController {
 	public void delete (@PathVariable long id){
 		repository.deleteById(id);
 	}
+	
 
 }
