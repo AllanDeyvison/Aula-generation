@@ -2,6 +2,8 @@ package org.generattion.blogPessoal.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.generattion.blogPessoal.model.UserLongin;
 import org.generattion.blogPessoal.model.Usuario;
 import org.generattion.blogPessoal.service.UsuarioService;
@@ -25,14 +27,12 @@ public class UsuarioController {
 	
 	
 	public @PostMapping ("/logar") ResponseEntity<UserLongin> Autentication(@RequestBody Optional<UserLongin> user){
-		return usuarioService.Logar(user).map(resp -> ResponseEntity.ok(resp))
+		return usuarioService.Logar(user)
+				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
 	
-	public @PostMapping ("/cadastrar") ResponseEntity<Usuario> post(@RequestBody Usuario usuario){
+	public @PostMapping ("/cadastrar") ResponseEntity<Optional<Usuario>> post(@Valid @RequestBody Usuario usuario){
 		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.cadastrarUsuario(usuario));
 	}
-	
-	
-
 }
